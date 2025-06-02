@@ -90,7 +90,7 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName,
             vapi.stop()
          }
   return (
-    <section className='flex flex-col h-[70]'>
+    <section className='flex flex-col h-[70vh]'>
         <section className='flex gap-8 max-sm:flex-col'>
             <div className='companion-section'>
                 <div className='companion-avatar' style={{backgroundColor: getSubjectColor(subject)}}>
@@ -152,12 +152,12 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName,
                         return (
                             <p key={index} className='max-sm:text-sm text-black'>
                                 {name.split(' ')[0]
-                                .replace(/[.,]/g, ',')}
-                                && {message.content}
+                                .replace('/[.,]/g, ','')}
+                                : {message.content}
                             </p>
                         )
                     }else{
-                        return <p key={index} className='max-sm:text-sm'>
+                        return <p key={index} className='text-primary max-sm:text-sm'>
                             {userName}: {message.content}
                         </p>
                     }
