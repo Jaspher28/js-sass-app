@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -75,7 +74,7 @@ const CompanionForm = () => {
               <FormControl>
                 <Input placeholder="Enter companion name" {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage  className="text-red-500" />
             </FormItem>
           )}
         />
@@ -104,7 +103,7 @@ const CompanionForm = () => {
                     </SelectContent>
                 </Select>
               </FormControl>
-              <FormMessage />
+              <FormMessage  className="text-red-500" />
             </FormItem>
           )}
         />
@@ -121,7 +120,7 @@ const CompanionForm = () => {
                     className="imput"
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage  className="text-red-500" />
             </FormItem>
           )}
         />
@@ -146,7 +145,7 @@ const CompanionForm = () => {
                     </SelectContent>
                 </Select>
               </FormControl>
-              <FormMessage />
+              <FormMessage  className="text-red-500" />
             </FormItem>
           )}
         />
@@ -171,7 +170,7 @@ const CompanionForm = () => {
                     </SelectContent>
                 </Select>
               </FormControl>
-              <FormMessage />
+              <FormMessage  className="text-red-500" />
             </FormItem>
           )}
         />
@@ -186,12 +185,12 @@ const CompanionForm = () => {
                 type="number"
                 placeholder="15" {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage  className="text-red-500" />
             </FormItem>
           )}
         />
   
-        <Button type="submit" className="border w-full cursor-pointer">Build your Companion</Button>
+        <button type="submit" className="flex justify-center border items-center btn-primary w-full cursor-pointer text-center">Build your Companion</button>
       </form>
     </Form>
   )

@@ -199,6 +199,14 @@ body {
   .home-section {
     @apply flex gap-4 justify-between items-start w-full max-lg:flex-col-reverse max-lg:items-center;
   }
+  /* .companions-grid {
+    @apply flex flex-wrap justify-center gap-4 w-full;
+  }
+
+  .companion-card {
+    @apply flex flex-col justify-between rounded-4xl border border-black p-6 gap-4 w-full max-w-[430px];
+  } */
+
   .companions-grid {
     @apply flex flex-wrap gap-4 w-full max-md:justify-center;
   }
