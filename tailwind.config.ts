@@ -16,9 +16,9 @@ export default {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
-			cta: "var(--cta)",
-            "cta-gold": "var(--cta-gold)",
-			"black-gold": "var(--cta-gold)", 
+  			cta: 'var(--cta)',
+  			'cta-gold': 'var(--cta-gold)',
+  			'black-gold': 'var(--cta-gold)',
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
@@ -55,10 +55,32 @@ export default {
   			}
   		},
   		borderRadius: {
-			'4xl': '2.5rem', 
+  			'4xl': '2.5rem',
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
   },

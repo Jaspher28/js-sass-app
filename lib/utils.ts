@@ -17,7 +17,7 @@ export const configureAssistant = (voice: string, style: string) => {
       style as keyof (typeof voices)[keyof typeof voices]
     ] || "sarah";
 
-  const vapiAssistant: CreateAssistantDTO = {
+    const vapiAssistant: CreateAssistantDTO = {
     name: "Companion",
     firstMessage:
       "Hello, let's start the session. Today we'll be talking about {{topic}}.",
