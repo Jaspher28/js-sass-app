@@ -6,6 +6,7 @@ import {cn} from "@/lib/utils";
 
 const navItems = [
     {label: "Home" , href:"/"},
+    {label: "Pricing", href:"/subscription"},
     {label: "Companions", href:"/companions"},
     {label: "My Journey", href:"/my-journey"},
 ]
@@ -18,7 +19,7 @@ const NavItems = () => {
             <Link
                 href={href}
                 key={label}
-                className={cn(pathname === href && 'text-primary font-semibold')}
+                className={cn(pathname === href && 'text-orange-600 font-semibold')}
             >
                 {label}
             </Link>

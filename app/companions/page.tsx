@@ -1,7 +1,8 @@
 import CompanionCard from "@/components/CompanionCard";
 import SearchInput from "@/components/SearchInput";
 import SubjectFilter from "@/components/SubjectFilter";
-import { getAllCompanions, getBookmarkedCompanions } from "@/lib/actions/companion.actions";
+import { getAllCompanions,  } from "@/lib/actions/companion.actions";
+// import { getBookmarkedCompanions} from "@/lib/actions/companion.actions";
 import { getSubjectColor } from "@/lib/utils";
 import { auth } from "@clerk/nextjs/server";
 
@@ -14,15 +15,15 @@ const CompanionsLibrary = async ({searchParams}: SearchParams) => {
 
   const { userId } = await auth();
   const companions = await getAllCompanions({ subject, topic});
-   // ✅ Fetch bookmarks for current user
-  const bookmarked = userId ? await getBookmarkedCompanions(userId) : [];
-  const bookmarkedIds = bookmarked.map((c) => c.id);
+  //  // ✅ Fetch bookmarks for current user
+  // const bookmarked = userId ? await getBookmarkedCompanions(userId) : [];
+  // const bookmarkedIds = bookmarked.map((c) => c.id);
 
-  // ✅ Tag each companion with `bookmarked: true` if needed
-  const companionsWithBookmark = companions.map(comp => ({
-    ...comp,
-    bookmarked: bookmarkedIds.includes(comp.id),
-  }));
+  // // ✅ Tag each companion with `bookmarked: true` if needed
+  // const companionsWithBookmark = companions.map(comp => ({
+  //   ...comp,
+  //   bookmarked: bookmarkedIds.includes(comp.id),
+  // }));
 
   console.log(companions)
 
@@ -35,10 +36,19 @@ const CompanionsLibrary = async ({searchParams}: SearchParams) => {
           <SubjectFilter/>
         </div>
       </section>
-      <section className="companions-grid">
-        {companionsWithBookmark.map((companion) => (
+      {/* <section className="companions-grid">
+        {companionsWithBookmark.map((companion, index) => (
           <CompanionCard 
-            key={companion.id} 
+            key={`${companion.id}-${index}`} 
+            {...companion}
+            color={getSubjectColor(companion.subject)}
+          />
+        ))}
+      </section> */}
+      <section className="companions-grid">
+        {companions.map((companion) => (
+          <CompanionCard 
+            key={`${companion.id}`} 
             {...companion}
             color={getSubjectColor(companion.subject)}
           />
