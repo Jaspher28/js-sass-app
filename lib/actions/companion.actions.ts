@@ -53,21 +53,47 @@ export const getCompanion = async (id: string) => {
     return data[0];
 }
 
-export const addToSessionHistory = async (companionId : string) => {
-    const { userId } = await auth()
-    const supabase = createSupabaseClient();
+// export const addToSessionHistory = async (companionId : string) => {
+//     const { userId } = await auth()
+//     const supabase = createSupabaseClient();
 
-    const {data, error} = await supabase
+//     const {data, error} = await supabase
+//     .from('session_history')
+//     .insert({
+//         companion_id : companionId,
+//         user_id : userId,
+//     })
+
+//     if(error) throw new Error(error.message);
+
+//     return data;
+// }
+export const addToSessionHistory = async (companionId: string) => {
+  const { userId } = await auth();
+  const supabase = createSupabaseClient();
+
+  // Step 1: Delete existing record for same user & companion
+  const { error: deleteError } = await supabase
+    .from('session_history')
+    .delete()
+    .eq('user_id', userId)
+    .eq('companion_id', companionId);
+
+  if (deleteError) throw new Error(deleteError.message);
+
+  // Step 2: Insert new session row
+  const { data, error: insertError } = await supabase
     .from('session_history')
     .insert({
-        companion_id : companionId,
-        user_id : userId,
-    })
+      companion_id: companionId,
+      user_id: userId,
+    });
 
-    if(error) throw new Error(error.message);
+  if (insertError) throw new Error(insertError.message);
 
-    return data;
-}
+  return data;
+};
+
 
 export const getRecentSessions = async (limit = 10) => {
     const supabase = createSupabaseClient();
