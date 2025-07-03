@@ -25,7 +25,8 @@ const CompanionsLibrary = async ({searchParams}: SearchParams) => {
   //   bookmarked: bookmarkedIds.includes(comp.id),
   // }));
 
-  console.log(companions)
+  // Using this for data fetching in console
+  // console.log(companions)
 
   return (
     <main>
